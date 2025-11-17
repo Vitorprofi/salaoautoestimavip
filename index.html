@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto Estima Vip - Cabelos Femininos</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* FUNDO DOURADO ANIMADO */
+.fundo-animado{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:radial-gradient(circle,#e6b80022 0%,#000 70%);
+    animation:luxo 8s infinite alternate;
+    filter:blur(90px);
+    z-index:-1;
+}
+@keyframes luxo{0%{transform:scale(1);}100%{transform:scale(1.3);}}
+
+/* TEXTO DOURADO */
+.dourado{color:#d4af37;text-shadow:0 0 10px #d4af37,0 0 20px #b8860b;}
+
+/* HEADER */
+header{
+    width:100%;position:fixed;top:0;left:0;padding:20px 50px;
+    display:flex;justify-content:space-between;align-items:center;
+    background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);z-index:10;
+}
+header h1{font-size:32px;font-weight:700;color:#d4af37;}
+nav a{
+    margin-left:25px;color:#fff;text-decoration:none;font-size:18px;
+    transition:.3s;
+}
+nav a:hover{color:#d4af37;}
+
+/* HERO */
+.hero{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:150px 50px 100px;gap:50px;
+}
+.hero-text h2{
+    font-size:60px;line-height:1.1;color:#d4af37;
+    animation:flutuar 4s infinite alternate;
+}
+.hero-text p{font-size:20px;margin-top:20px;max-width:500px;}
+@keyframes flutuar{0%{transform:translateY(0);}100%{transform:translateY(-15px);}}
+
+.btn{
+    display:inline-block;margin-top:30px;padding:14px 40px;
+    background:linear-gradient(90deg,#d4af37,#8d6c1f);
+    color:#000;font-weight:700;border-radius:40px;text-decoration:none;font-size:20px;
+    box-shadow:0 0 20px #d4af37;transition:.3s;
+}
+.btn:hover{transform:scale(1.05);box-shadow:0 0 35px #d4af37;}
+
+.hero img{
+    width:420px;border-radius:20px;box-shadow:0 0 25px #d4af37;
+}
+
+/* SERVIÇOS */
+.servicos{text-align:center;padding:80px 50px;}
+.servicos h2{font-size:48px;margin-bottom:40px;color:#d4af37;}
+.cards{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;
+}
+.card{
+    background:rgba(255,255,255,0.05);padding:25px;border-radius:20px;
+    backdrop-filter:blur(10px);box-shadow:0 0 15px #d4af37;
+    transition:.3s;
+}
+.card:hover{transform:translateY(-10px);box-shadow:0 0 25px #ffdf6b;}
+.card img{width:100%;border-radius:15px;margin-bottom:20px;}
+
+/* CONTATO */
+.contato{text-align:center;padding:80px 50px;}
+.contato h2{font-size:45px;color:#d4af37;margin-bottom:20px;}
+
+/* 🔥 CORREÇÃO DO BOTÃO WHATSAPP */
+.whatsapp-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    white-space:nowrap;
+    max-width:90%;
+    padding:16px 40px;
+    background:#d4af37;
+    color:#000;
+    font-size:22px;
+    font-weight:700;
+    border-radius:40px;
+    text-decoration:none;
+    box-shadow:0 0 20px #d4af37;
+    transition:.3s;
+}
+.whatsapp-btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 30px #ffdf6b;
+}
+
+/* RESPONSIVO */
+@media(max-width:900px){
+    .hero{flex-direction:column;text-align:center;padding-top:130px;}
+    .hero img{width:330px;}
+    .hero-text h2{font-size:45px;}
+}
+@media(max-width:600px){
+    header{padding:15px 30px;}
+    header h1{font-size:24px;}
+    nav a{font-size:16px;margin-left:12px;}
+}
+</style>
+</head>
+<body>
+<div class="fundo-animado"></div>
+
+<header>
+    <h1>Auto Estima Vip</h1>
+    <nav>
+        <a href="#hero">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#contato">Contato</a>
+    </nav>
+</header>
+
+<section class="hero" id="hero">
+    <div class="hero-text">
+        <h2 class="dourado">Transforme Seus Cabelos<br>Com Luxo e Elegância</h2>
+        <p>Especialistas em beleza feminina. Loiros, escovas, hidratações, cortes modernos e tratamentos premium.</p>
+        <a href="#contato" class="btn">Agendar Agora</a>
+    </div>
+
+    <img src="https://imgs.search.brave.com/TOjxFlnnM89CDvw-t_PSORCxdB2kZ_eg63iY-PZhYrM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtZ3JhdGlz/L3JldHJhdG8tZG8t/Y2xvc2UtdXAtZGEt/bXVsaGVyLWVsZWdh/bnRlLWJyaW5jb3Mt/YWNlc3Nvcmlvcy1t/dWxoZXItYm9uaXRh/LWxvaXJhLWRlLWNh/YmVsby1sb25nby1l/bmNhcmFjb2xhZG8t/Y29tLW1hcXVpYWdl/bS1kZS1iZWxlemEt/ZS1yZXRyYXRvLWRl/LW1vZGEtZmVtaW5p/bmEtZGUtcGVsZS1z/YXVkYXZlbC1hLWdh/cm90YS1jb20tdW0t/c29ycmlzby1hZ3Jh/ZGF2ZWxfMzQzNjI5/LTU1LmpwZz9zZW10/PWFpc19oeWJyaWQm/dz03NDAmcT04MA"></section>
+
+<section class="servicos" id="servicos">
+    <h2>Serviços Exclusivos</h2>
+
+    <div class="cards">
+        <div class="card">
+            <img src="https://imgs.search.brave.com/8xBE7__aBeZIp7mfQ0Zrv_07HCkJ2XD1K_6sw58OPXE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvODky/MzY2MTQwL3B0L2Zv/dG8vYmVhdXRpZnVs/LXdvbWFuLXdpdGgt/bG9uZy1zdHJhaWdo/dC1oYWlyLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1BRkto/d0FGc2xqeHNJUHpa/MHNfRFRUSE5QZW1T/T3dkMnVaNEVwVEVy/dlh3PQ" alt="Loiro Premium">
+            <h3 class="dourado">Loiro Perfeito</h3>
+            <p>Clareamento profissional, descoloração saudável e tons personalizados.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://imgs.search.brave.com/h9VtxqX4SwTm3vKVmoHN6uLRlMkCHonVX73KldmruU4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9iZWxhLW11bGhl/ci1pbmRpYW5hLWNv/bS1sb25nb3MtY2Fi/ZWxvcy1icmlsaGFu/dGVzLWRlLXJ1YS1i/ZWxlemEtbW9kZWxv/LWdhcm90YS1wZW50/ZWFkby1wYXJhLW1h/cmNhLWRlLWx1eG9f/MTI1NzkwMi03MTkz/LmpwZz9zZW10PWFp/c19oeWJyaWQmdz03/NDAmcT04MA" alt="Escova e Hidratação">
+            <h3 class="dourado">Escova & Hidratação</h3>
+            <p>Tratamentos para brilho intenso, maciez e redução de frizz.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://imgs.search.brave.com/6rhcueSDxUkhzZmEgMJm-VI6BoxGfMPh1PvYev-dvN4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTEy/OTY0MzI1L3B0L2Zv/dG8vdW1hLWZhbnQl/QzMlQTFzdGljYS10/cmVzc2VzLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz15cGhu/a1hldjVrQUx2dlhn/UlNvd3pYTUotZ2dW/NVZJc3N2elVUYjRa/UkNNPQ" alt="Corte Feminino">
+            <h3 class="dourado">Corte Feminino</h3>
+            <p>Do clássico ao moderno, cortes que valorizam sua beleza.</p>
+        </div>
+    </div>
+</section>
+
+<section class="contato" id="contato">
+    <h2>Agende Seu Horário</h2>
+
+    <a class="whatsapp-btn" href="https://wa.me/5515996069571?text=Olá! Quero agendar um horário." target="_blank">
+        Falar no WhatsApp
+    </a>
+</section>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -51,6 +51,7 @@ nav a:hover{color:#d4af37;}
 .hero-text p{font-size:20px;margin-top:20px;max-width:500px;}
 @keyframes flutuar{0%{transform:translateY(0);}100%{transform:translateY(-15px);}}
 
+/* BOTÃO */
 .btn{
     display:inline-block;margin-top:30px;padding:14px 40px;
     background:linear-gradient(90deg,#d4af37,#8d6c1f);
@@ -81,7 +82,6 @@ nav a:hover{color:#d4af37;}
 .contato{text-align:center;padding:80px 50px;}
 .contato h2{font-size:45px;color:#d4af37;margin-bottom:20px;}
 
-/* 🔥 CORREÇÃO DO BOTÃO WHATSAPP */
 .whatsapp-btn{
     display:inline-flex;
     align-items:center;
@@ -103,6 +103,25 @@ nav a:hover{color:#d4af37;}
     box-shadow:0 0 30px #ffdf6b;
 }
 
+/* MAPA */
+.mapa{
+    padding:60px 30px;
+    text-align:center;
+}
+.mapa h2{
+    font-size:40px;
+    margin-bottom:25px;
+    color:#d4af37;
+}
+.mapa iframe{
+    width:100%;
+    max-width:900px;
+    height:450px;
+    border:0;
+    border-radius:20px;
+    box-shadow:0 0 20px #d4af37;
+}
+
 /* RESPONSIVO */
 @media(max-width:900px){
     .hero{flex-direction:column;text-align:center;padding-top:130px;}
@@ -117,6 +136,7 @@ nav a:hover{color:#d4af37;}
 </style>
 </head>
 <body>
+
 <div class="fundo-animado"></div>
 
 <header>
@@ -125,6 +145,7 @@ nav a:hover{color:#d4af37;}
         <a href="#hero">Início</a>
         <a href="#servicos">Serviços</a>
         <a href="#contato">Contato</a>
+        <a href="#mapa">Localização</a>
     </nav>
 </header>
 
@@ -135,26 +156,27 @@ nav a:hover{color:#d4af37;}
         <a href="#contato" class="btn">Agendar Agora</a>
     </div>
 
-    <img src="https://imgs.search.brave.com/TOjxFlnnM89CDvw-t_PSORCxdB2kZ_eg63iY-PZhYrM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtZ3JhdGlz/L3JldHJhdG8tZG8t/Y2xvc2UtdXAtZGEt/bXVsaGVyLWVsZWdh/bnRlLWJyaW5jb3Mt/YWNlc3Nvcmlvcy1t/dWxoZXItYm9uaXRh/LWxvaXJhLWRlLWNh/YmVsby1sb25nby1l/bmNhcmFjb2xhZG8t/Y29tLW1hcXVpYWdl/bS1kZS1iZWxlemEt/ZS1yZXRyYXRvLWRl/LW1vZGEtZmVtaW5p/bmEtZGUtcGVsZS1z/YXVkYXZlbC1hLWdh/cm90YS1jb20tdW0t/c29ycmlzby1hZ3Jh/ZGF2ZWxfMzQzNjI5/LTU1LmpwZz9zZW10/PWFpc19oeWJyaWQm/dz03NDAmcT04MA"></section>
+    <img src="https://imgs.search.brave.com/TOjxFlnnM89CDvw-t_PSORCxdB2kZ_eg63iY-PZhYrM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtZ3JhdGlz/L3JldHJhdG8tZG8t/Y2xvc2UtdXAtZGEt/bXVsaGVyLWVsZWdh/bnRlLWJyaW5jb3Mt/YWNlc3Nvcmlvcy1t/dWxoZXItYm9uaXRh/LWxvaXJhLWRlLWNh/YmVsby1sb25nby1l/bmNhcmFjb2xhZG8t/Y29tLW1hcXVpYWdl/bS1kZS1iZWxlemEt/ZS1yZXRyYXRvLWRl/LW1vZGEtZmVtaW5p/bmEtZGUtcGVsZS1z/YXVkYXZlbC1hLWdh/cm90YS1jb20tdW0t/c29ycmlzby1hZ3Jh/ZGF2ZWxfMzQzNjI5/LTU1LmpwZz9zZW10/PWFpc19oeWJyaWQm/dz03NDAmcT04MA">
+</section>
 
 <section class="servicos" id="servicos">
     <h2>Serviços Exclusivos</h2>
 
     <div class="cards">
         <div class="card">
-            <img src="https://imgs.search.brave.com/8xBE7__aBeZIp7mfQ0Zrv_07HCkJ2XD1K_6sw58OPXE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvODky/MzY2MTQwL3B0L2Zv/dG8vYmVhdXRpZnVs/LXdvbWFuLXdpdGgt/bG9uZy1zdHJhaWdo/dC1oYWlyLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1BRkto/d0FGc2xqeHNJUHpa/MHNfRFRUSE5QZW1T/T3dkMnVaNEVwVEVy/dlh3PQ" alt="Loiro Premium">
-            <h3 class="dourado">Loiro Perfeito</h3>
+            <img src="https://imgs.search.brave.com/8xBE7__aBeZIp7mfQ0Zrv_07HCkJ2XD1K_6sw58OPXE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvODky/MzY2MTQwL3B0L2Zv/dG8vYmVhdXRpZnVs/LXdvbWFuLXdpdGgt/bG9uZy1zdHJhaWdo/dC1oYWlyLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1BRkto/d0FGc2xqeHNJUHpa/MHNfRFRUSE5QZW1T/T3dkMnVaNEVwVEVy/dlh3PQ"alt="Loiro Premium">
+            <h3 class="dourado">Loiro</h3>
             <p>Clareamento profissional, descoloração saudável e tons personalizados.</p>
         </div>
 
         <div class="card">
-            <img src="https://imgs.search.brave.com/h9VtxqX4SwTm3vKVmoHN6uLRlMkCHonVX73KldmruU4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9iZWxhLW11bGhl/ci1pbmRpYW5hLWNv/bS1sb25nb3MtY2Fi/ZWxvcy1icmlsaGFu/dGVzLWRlLXJ1YS1i/ZWxlemEtbW9kZWxv/LWdhcm90YS1wZW50/ZWFkby1wYXJhLW1h/cmNhLWRlLWx1eG9f/MTI1NzkwMi03MTkz/LmpwZz9zZW10PWFp/c19oeWJyaWQmdz03/NDAmcT04MA" alt="Escova e Hidratação">
+            <img src="https://imgs.search.brave.com/h9VtxqX4SwTm3vKVmoHN6uLRlMkCHonVX73KldmruU4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9iZWxhLW11bGhl/ci1pbmRpYW5hLWNv/bS1sb25nb3MtY2Fi/ZWxvcy1icmlsaGFu/dGVzLWRlLXJ1YS1i/ZWxlemEtbW9kZWxv/LWdhcm90YS1wZW50/ZWFkby1wYXJhLW1h/cmNhLWRlLWx1eG9f/MTI1NzkwMi03MTkz/LmpwZz9zZW10PWFp/c19oeWJyaWQmdz03/NDAmcT04MA">
             <h3 class="dourado">Escova & Hidratação</h3>
             <p>Tratamentos para brilho intenso, maciez e redução de frizz.</p>
         </div>
 
         <div class="card">
-            <img src="https://imgs.search.brave.com/6rhcueSDxUkhzZmEgMJm-VI6BoxGfMPh1PvYev-dvN4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTEy/OTY0MzI1L3B0L2Zv/dG8vdW1hLWZhbnQl/QzMlQTFzdGljYS10/cmVzc2VzLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz15cGhu/a1hldjVrQUx2dlhn/UlNvd3pYTUotZ2dW/NVZJc3N2elVUYjRa/UkNNPQ" alt="Corte Feminino">
+            <img src="https://imgs.search.brave.com/6rhcueSDxUkhzZmEgMJm-VI6BoxGfMPh1PvYev-dvN4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTEy/OTY0MzI1L3B0L2Zv/dG8vdW1hLWZhbnQl/QzMlQTFzdGljYS10/cmVzc2VzLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz15cGhu/a1hldjVrQUx2dlhn/UlNvd3pYTUotZ2dW/NVZJc3N2elVUYjRa/UkNNPQ">
             <h3 class="dourado">Corte Feminino</h3>
             <p>Do clássico ao moderno, cortes que valorizam sua beleza.</p>
         </div>
@@ -169,7 +191,21 @@ nav a:hover{color:#d4af37;}
     </a>
 </section>
 
+<!-- MAPA ADICIONADO -->
+<section class="mapa" id="mapa">
+    <h2>Localização</h2>
+
+    <div style="position:relative;width:100%;max-width:700px;margin:0 auto;padding-bottom:50%;height:0;overflow:hidden;border-radius:20px;box-shadow:0 0 20px #d4af37;">
+      <iframe
+        src="https://www.google.com/maps?q=Avenida+Em%C3%ADlio+Nastri+116,+Vila+Nastri,+Itapetininga+SP&output=embed"
+        style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+</section>
+
 </body>
 </html>
-
-

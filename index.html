@@ -1,211 +1,380 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auto Estima Vip - Cabelos Femininos</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{
-    background:#000;
-    color:#fff;
-    overflow-x:hidden;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auto Estima Vip - Salão de Beleza</title>
 
-/* FUNDO DOURADO ANIMADO */
-.fundo-animado{
-    position:fixed;top:0;left:0;width:100%;height:100%;
-    background:radial-gradient(circle,#e6b80022 0%,#000 70%);
-    animation:luxo 8s infinite alternate;
-    filter:blur(90px);
-    z-index:-1;
-}
-@keyframes luxo{0%{transform:scale(1);}100%{transform:scale(1.3);}}
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
 
-/* TEXTO DOURADO */
-.dourado{color:#d4af37;text-shadow:0 0 10px #d4af37,0 0 20px #b8860b;}
+  <style>
+    :root{
+      --bg-black:#050405;
+      --neon-red:#ff003c;
+      --neon-red-70:rgba(255,0,60,0.12);
+      --glass: rgba(255,255,255,0.02);
+      --muted:#cfcfcf;
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg-black);color:#fff;overflow-x:hidden}
 
-/* HEADER */
-header{
-    width:100%;position:fixed;top:0;left:0;padding:20px 50px;
-    display:flex;justify-content:space-between;align-items:center;
-    background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);z-index:10;
-}
-header h1{font-size:32px;font-weight:700;color:#d4af37;}
-nav a{
-    margin-left:25px;color:#fff;text-decoration:none;font-size:18px;
-    transition:.3s;
-}
-nav a:hover{color:#d4af37;}
+    /* animated textured black background */
+    body::before{
+      content:'';position:fixed;inset:0;z-index:-30;background-image:url('imagem1.png');
+      background-size:cover;background-position:center;filter:brightness(.18) contrast(1.05) saturate(1.1);transform:scale(1.06);
+      animation:bgFloat 28s ease-in-out infinite alternate;opacity:1;
+    }
+    @keyframes bgFloat{0%{transform:scale(1.02) translateY(0)}50%{transform:scale(1.08) translateY(-3%)}100%{transform:scale(1.02) translateY(0)}}
 
-/* HERO */
-.hero{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:150px 50px 100px;gap:50px;
-}
-.hero-text h2{
-    font-size:60px;line-height:1.1;color:#d4af37;
-    animation:flutuar 4s infinite alternate;
-}
-.hero-text p{font-size:20px;margin-top:20px;max-width:500px;}
-@keyframes flutuar{0%{transform:translateY(0);}100%{transform:translateY(-15px);}}
+    /* subtle red radial vignette */
+    body::after{content:'';position:fixed;inset:0;z-index:-20;pointer-events:none;background:radial-gradient(ellipse at center, rgba(255,0,60,0.06), rgba(0,0,0,0.75))}
 
-/* BOTÃO */
-.btn{
-    display:inline-block;margin-top:30px;padding:14px 40px;
-    background:linear-gradient(90deg,#d4af37,#8d6c1f);
-    color:#000;font-weight:700;border-radius:40px;text-decoration:none;font-size:20px;
-    box-shadow:0 0 20px #d4af37;transition:.3s;
-}
-.btn:hover{transform:scale(1.05);box-shadow:0 0 35px #d4af37;}
+    header{display:flex;justify-content:space-between;align-items:center;padding:20px 6%;position:sticky;top:0;backdrop-filter:blur(6px);background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25));border-bottom:1px solid rgba(255,0,60,0.08);z-index:40}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--neon-red),#ff6b7a);display:flex;align-items:center;justify-content:center;font-weight:800;color:#140406;box-shadow:0 8px 40px rgba(255,0,60,0.08)}
+    .brand h1{margin:0;font-size:20px;color:var(--neon-red);text-shadow:0 0 14px rgba(255,0,60,0.18)}
 
-.hero img{
-    width:420px;border-radius:20px;box-shadow:0 0 25px #d4af37;
-}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{color:#e8e8e8;text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+    nav a:hover{color:var(--neon-red);box-shadow:0 6px 20px rgba(255,0,60,0.06);background:rgba(255,0,60,0.02)}
 
-/* SERVIÇOS */
-.servicos{text-align:center;padding:80px 50px;}
-.servicos h2{font-size:48px;margin-bottom:40px;color:#d4af37;}
-.cards{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;
-}
-.card{
-    background:rgba(255,255,255,0.05);padding:25px;border-radius:20px;
-    backdrop-filter:blur(10px);box-shadow:0 0 15px #d4af37;
-    transition:.3s;
-}
-.card:hover{transform:translateY(-10px);box-shadow:0 0 25px #ffdf6b;}
-.card img{width:100%;border-radius:15px;margin-bottom:20px;}
+    .cta{background:linear-gradient(90deg,var(--neon-red),#ff7a96);color:#140406;padding:10px 14px;border-radius:12px;font-weight:700;border:0;cursor:pointer}
 
-/* CONTATO */
-.contato{text-align:center;padding:80px 50px;}
-.contato h2{font-size:45px;color:#d4af37;margin-bottom:20px;}
+    /* Hero */
+    .hero{display:flex;gap:28px;align-items:center;padding:70px 6%;min-height:420px}
+    .hero-left{flex:1}
+    .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--neon-red-70);color:var(--neon-red);font-weight:700;margin-bottom:18px}
+    .hero h2{font-size:44px;line-height:1.02;margin:0 0 14px;color:var(--neon-red);text-shadow:0 6px 28px rgba(255,0,60,0.12)}
+    .hero p{margin:0 0 20px;color:var(--muted);max-width:640px}
+    .hero .actions{display:flex;gap:12px}
 
-.whatsapp-btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    white-space:nowrap;
-    max-width:90%;
-    padding:16px 40px;
-    background:#d4af37;
-    color:#000;
-    font-size:22px;
-    font-weight:700;
-    border-radius:40px;
-    text-decoration:none;
-    box-shadow:0 0 20px #d4af37;
-    transition:.3s;
-}
-.whatsapp-btn:hover{
-    transform:scale(1.1);
-    box-shadow:0 0 30px #ffdf6b;
-}
+    .card-book{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:14px;width:380px;border:1px solid rgba(255,0,60,0.06);box-shadow:0 12px 40px rgba(0,0,0,0.6)}
+    .card-book h3{margin:0 0 8px;color:var(--neon-red)}
+    .card-book label{display:block;font-size:13px;color:#cfcfcf;margin:8px 0 4px}
+    .card-book input,.card-book select,.card-book textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff}
+    .card-book .book-row{display:flex;gap:8px}
 
-/* MAPA */
-.mapa{
-    padding:60px 30px;
-    text-align:center;
-}
-.mapa h2{
-    font-size:40px;
-    margin-bottom:25px;
-    color:#d4af37;
-}
-.mapa iframe{
-    width:100%;
-    max-width:900px;
-    height:450px;
-    border:0;
-    border-radius:20px;
-    box-shadow:0 0 20px #d4af37;
-}
+    /* Services */
+    .services{padding:60px 6%;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+    .service{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:12px;border:1px solid rgba(255,0,60,0.06);transition:transform .3s,box-shadow .3s}
+    .service:hover{transform:translateY(-8px);box-shadow:0 18px 60px rgba(255,0,60,0.06)}
+    .service h4{margin:0 0 8px;color:var(--neon-red)}
+    .service p{margin:0;color:#d6d6d6}
 
-/* RESPONSIVO */
-@media(max-width:900px){
-    .hero{flex-direction:column;text-align:center;padding-top:130px;}
-    .hero img{width:330px;}
-    .hero-text h2{font-size:45px;}
-}
-@media(max-width:600px){
-    header{padding:15px 30px;}
-    header h1{font-size:24px;}
-    nav a{font-size:16px;margin-left:12px;}
-}
+    /* About / Contact */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:60px 6%}
+    .about{background:rgba(255,255,255,0.02);padding:22px;border-radius:12px;border:1px solid rgba(255,0,60,0.04)}
+
+    footer{padding:28px 6%;text-align:center;color:#bfbfbf}
+
+    /* floating buttons */
+    .floating{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:12px;z-index:80}
+    .fab{width:60px;height:60px;border-radius:14px;display:flex;align-items:center;justify-content:center;border:0;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+    .fab.wa{background:linear-gradient(180deg,rgba(255,0,60,0.09),rgba(255,0,60,0.03));border:2px solid rgba(255,0,60,0.12);color:var(--neon-red)}
+    .fab.ig{background:linear-gradient(180deg,rgba(255,0,60,0.12),rgba(255,0,60,0.04));border:2px solid rgba(255,0,60,0.12);color:var(--neon-red)}
+    .fab svg{width:28px;height:28px}
+
+    /* map */
+    #map{height:320px;width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.04)}
+
+    /* responsive */
+    @media(max-width:980px){.hero{flex-direction:column;padding:40px 6%}.card-book{width:100%}.two-col{grid-template-columns:1fr}}
+    @media(max-width:480px){.hero h2{font-size:28px}}
+
+    /* Correção: opções dos serviços visíveis sempre */
+  select, option {
+    background:#111 !important;
+    color:#fff !important;
+  }
+  /* Estilo novo e completo para o seletor do agendamento */
+  select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #ff003c;
+    background: #0d0d0d;
+    color: #fff !important;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+    box-shadow: 0 0 10px #ff003c55;
+  }
+
+  select:hover,
+  select:focus {
+    border-color: #ff1a4d;
+    box-shadow: 0 0 18px #ff003c;
+  }
+
+  option {
+    background: #0d0d0d;
+    color: #fff !important;
+    padding: 10px;
+  }
+
+  /* ===== MENU HAMBÚRGUER RESPONSIVO ===== */
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+    gap:6px;
+  }
+  .hamburger span{
+    width:28px;
+    height:3px;
+    background:#ff003c;
+    box-shadow:0 0 8px #ff003c;
+    transition:0.3s;
+  }
+
+  @media(max-width:850px){
+    nav{
+      position:fixed;
+      top:0;
+      right:-100%;
+      width:70%;
+      height:100vh;
+      background:rgba(0,0,0,0.85);
+      display:flex;
+      flex-direction:column;
+      padding-top:120px;
+      gap:35px;
+      transition:0.4s;
+      border-left:2px solid #ff003c;
+    }
+    nav a{
+      font-size:22px;
+      margin-left:0;
+      text-align:center;
+    }
+    nav.active{
+      right:0;
+    }
+    .hamburger{
+      display:flex;
+    }
+  }
+
+  /* ===== AJUSTES DE RESPONSIVIDADE GERAL ===== */
+  @media(max-width:700px){
+    .hero h2{font-size:34px;}
+    .hero p{font-size:16px;}
+    header{padding:20px 6%;}
+    .section{padding:60px 8%;}
+  }
+
+  @media(max-width:450px){
+    .hero{padding:90px 6% 120px;}
+    .hero h2{font-size:28px;}
+    .hero p{font-size:15px;}
+    .card{padding:18px;}
+  }
 </style>
 </head>
 <body>
 
-<div class="fundo-animado"></div>
-
-<header>
-    <h1>Auto Estima Vip</h1>
+  <header>
+    <div class="brand">
+      <div class="logo">AE</div>
+      <div>
+        <h1>Auto Estima Vip</h1>
+      </div>
+    </div>
     <nav>
-        <a href="#hero">Início</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#contato">Contato</a>
-        <a href="#mapa">Localização</a>
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+      <button class="cta" onclick="openBooking()">Agendar</button>
     </nav>
+    <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </header>
 
-<section class="hero" id="hero">
-    <div class="hero-text">
-        <h2 class="dourado">Transforme Seus Cabelos<br>Com Luxo e Elegância</h2>
-        <p>Especialistas em beleza feminina. Loiros, escovas, hidratações, cortes modernos e tratamentos premium.</p>
-        <a href="#contato" class="btn">Agendar Agora</a>
-    </div>
-
-    <img src="https://imgs.search.brave.com/TOjxFlnnM89CDvw-t_PSORCxdB2kZ_eg63iY-PZhYrM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtZ3JhdGlz/L3JldHJhdG8tZG8t/Y2xvc2UtdXAtZGEt/bXVsaGVyLWVsZWdh/bnRlLWJyaW5jb3Mt/YWNlc3Nvcmlvcy1t/dWxoZXItYm9uaXRh/LWxvaXJhLWRlLWNh/YmVsby1sb25nby1l/bmNhcmFjb2xhZG8t/Y29tLW1hcXVpYWdl/bS1kZS1iZWxlemEt/ZS1yZXRyYXRvLWRl/LW1vZGEtZmVtaW5p/bmEtZGUtcGVsZS1z/YXVkYXZlbC1hLWdh/cm90YS1jb20tdW0t/c29ycmlzby1hZ3Jh/ZGF2ZWxfMzQzNjI5/LTU1LmpwZz9zZW10/PWFpc19oeWJyaWQm/dz03NDAmcT04MA">
-</section>
-
-<section class="servicos" id="servicos">
-    <h2>Serviços Exclusivos</h2>
-
-    <div class="cards">
-        <div class="card">
-            <img src="https://imgs.search.brave.com/8xBE7__aBeZIp7mfQ0Zrv_07HCkJ2XD1K_6sw58OPXE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvODky/MzY2MTQwL3B0L2Zv/dG8vYmVhdXRpZnVs/LXdvbWFuLXdpdGgt/bG9uZy1zdHJhaWdo/dC1oYWlyLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1BRkto/d0FGc2xqeHNJUHpa/MHNfRFRUSE5QZW1T/T3dkMnVaNEVwVEVy/dlh3PQ"alt="Loiro Premium">
-            <h3 class="dourado">Loiro</h3>
-            <p>Clareamento profissional, descoloração saudável e tons personalizados.</p>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-left">
+        <div class="kicker">Salão VIP</div>
+        <h2>Cuide da sua beleza com quem entende e valoriza você</h2>
+        <p>Profissionais especializados, atendimento personalizado e resultados que realçam sua confiança. Beleza com sofisticação e toque VIP.</p>
+        <div class="actions">
+          <button class="cta" onclick="openBooking()">Agendar Agora</button>
+          <button class="cta" style="background:transparent;border:1px solid rgba(255,0,60,0.08);color:#fff" onclick="scrollTo('#servicos')">Ver Serviços</button>
         </div>
+      </div>
 
-        <div class="card">
-            <img src="https://imgs.search.brave.com/h9VtxqX4SwTm3vKVmoHN6uLRlMkCHonVX73KldmruU4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9iZWxhLW11bGhl/ci1pbmRpYW5hLWNv/bS1sb25nb3MtY2Fi/ZWxvcy1icmlsaGFu/dGVzLWRlLXJ1YS1i/ZWxlemEtbW9kZWxv/LWdhcm90YS1wZW50/ZWFkby1wYXJhLW1h/cmNhLWRlLWx1eG9f/MTI1NzkwMi03MTkz/LmpwZz9zZW10PWFp/c19oeWJyaWQmdz03/NDAmcT04MA">
-            <h3 class="dourado">Escova & Hidratação</h3>
-            <p>Tratamentos para brilho intenso, maciez e redução de frizz.</p>
+      <aside>
+        <div class="card-book" aria-hidden="false">
+          <h3>Agendamento Rápido</h3>
+          <label for="nome">Nome</label>
+          <input id="nome" placeholder="Seu nome" />
+          <label for="servico">Serviço</label>
+          <select id="servico">
+            <option>Corte Feminino</option>
+            <option>Coloração / Mechas</option>
+            <option>Escova / Finalização</option>
+            <option>Hidratação Premium</option>
+          </select>
+          <div class="book-row" style="margin-top:8px">
+            <div style="flex:1"><label for="data">Data</label><input id="data" type="date"/></div>
+            <div style="width:120px"><label for="hora">Hora</label><input id="hora" type="time"/></div>
+          </div>
+          <label for="tel">Telefone / WhatsApp</label>
+          <input id="tel" placeholder="(00) 90000-0000" />
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <button class="cta" onclick="confirmBooking()">Confirmar</button>
+            <button class="cta" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff" onclick="resetBooking()">Limpar</button>
+          </div>
+          <p style="font-size:12px;color:#cfcfcf;margin-top:10px">Após confirmar, você receberá instruções por WhatsApp (simulação de envio). Integração disponível via API/Back-end.</p>
         </div>
+      </aside>
+    </section>
 
-        <div class="card">
-            <img src="https://imgs.search.brave.com/6rhcueSDxUkhzZmEgMJm-VI6BoxGfMPh1PvYev-dvN4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTEy/OTY0MzI1L3B0L2Zv/dG8vdW1hLWZhbnQl/QzMlQTFzdGljYS10/cmVzc2VzLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz15cGhu/a1hldjVrQUx2dlhn/UlNvd3pYTUotZ2dW/NVZJc3N2elVUYjRa/UkNNPQ">
-            <h3 class="dourado">Corte Feminino</h3>
-            <p>Do clássico ao moderno, cortes que valorizam sua beleza.</p>
+    <section id="servicos" class="services">
+      <div class="service">
+        <h4>Corte Feminino</h4>
+        <p>Cortes modernos e personalizados para cada formato de rosto.</p>
+      </div>
+      <div class="service">
+        <h4>Coloração e Mechas</h4>
+        <p>Técnicas profissionais com produtos de alta qualidade.</p>
+      </div>
+      <div class="service">
+        <h4>Escova e Finalização</h4>
+        <p>Acabamento impecável para eventos e dia a dia.</p>
+      </div>
+      <div class="service">
+        <h4>Hidratação Premium</h4>
+        <p>Tratamentos de nutrição profunda para revitalizar os fios.</p>
+      </div>
+    </section>
+
+    <section id="sobre" class="two-col">
+      <div class="about">
+        <h3>Sobre o Salão</h3>
+        <p>Auto Estima Vip nasceu para oferecer um atendimento diferenciado e resultados que inspiram. Nossa equipe é formada por profissionais experientes que utilizam técnicas atualizadas e produtos de qualidade para cuidar de você com carinho.</p>
+      </div>
+      <div class="about">
+        <h3>Equipe</h3>
+        <p>Trabalhamos com cabeleireiros, coloristas e especialistas em tratamentos capilares que seguem tendências internacionais e priorizam a saúde dos fios.</p>
+      </div>
+    </section>
+
+    <section id="contato" style="padding:60px 6%">
+      <h3 style="color:var(--neon-red)">Contato</h3>
+      <div style="display:grid;grid-template-columns:1fr 420px;gap:24px;margin-top:18px">
+        <div>
+          <p style="color:#ccc">Agendamentos e dúvidas: envie mensagem pelo WhatsApp ou ligue para nós.</p>
+          <p><strong>WhatsApp:</strong> <a href="https://wa.me/5515996069571?text=Olá,%20gostaria%20de%20mais%20informações." target="_blank" style="color:var(--neon-red)">(55) 15 99606-9571</a></p>
+          <p><strong>Endereço:</strong> Rua Exemplo, 123 - Centro</p>
         </div>
-    </div>
-</section>
+        <div>
+          <div id="map"></div>
+        </div>
+      </div>
+    </section>
 
-<section class="contato" id="contato">
-    <h2>Agende Seu Horário</h2>
+  </main>
 
-    <a class="whatsapp-btn" href="https://wa.me/5515996069571?text=Olá! Quero agendar um horário." target="_blank">
-        Falar no WhatsApp
+  <footer>
+    © <span id="year"></span> Auto Estima Vip — Todos os direitos reservados.
+  </footer>
+
+  <!-- Floating action buttons -->
+  <div class="floating">
+    <a class="fab wa" href="https://wa.me/5515996069571?text=Olá,%20gostaria%20de%20mais%20informações." target="_blank" title="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.08c0 4.99-4.05 9.04-9.04 9.04A9 9 0 0 1 3 12.08 9 9 0 0 1 12 3.04c1.55 0 3 .36 4.32 1.02L21 3v9.08z" stroke="currentColor" stroke-width="1.2"/></svg>
     </a>
-</section>
+    <a class="fab ig" href="https://www.instagram.com/especialistaemloiro/" target="_blank" title="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2"/><circle cx="17" cy="7" r="0.6" fill="currentColor"/></svg>
+    </a>
+  </div>
 
-<!-- MAPA ADICIONADO -->
-<section class="mapa" id="mapa">
-    <h2>Localização</h2>
-
-    <div style="position:relative;width:100%;max-width:700px;margin:0 auto;padding-bottom:50%;height:0;overflow:hidden;border-radius:20px;box-shadow:0 0 20px #d4af37;">
-      <iframe
-        src="https://www.google.com/maps?q=Avenida+Em%C3%ADlio+Nastri+116,+Vila+Nastri,+Itapetininga+SP&output=embed"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-        allowfullscreen
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+  <!-- Booking modal (progressive enhancement) -->
+  <div id="bookingModal" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:120">
+    <div style="width:420px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:12px;border:1px solid rgba(255,0,60,0.06)">
+      <h3 style="margin-top:0;color:var(--neon-red)">Agendar Serviço</h3>
+      <label>Nome</label><input id="mNome" style="width:100%;padding:10px;border-radius:8px;margin-top:6px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff">
+      <label style="margin-top:8px">Serviço</label>
+      <select id="mServico" style="width:100%;padding:10px;border-radius:8px;margin-top:6px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff">
+        <option>Corte Feminino</option>
+        <option>Coloração / Mechas</option>
+        <option>Escova / Finalização</option>
+        <option>Hidratação Premium</option>
+      </select>
+      <div style="display:flex;gap:8px;margin-top:8px"><input id="mData" type="date" style="flex:1;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff"><input id="mHora" type="time" style="width:140px;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff"></div>
+      <label style="margin-top:8px">WhatsApp</label><input id="mTel" placeholder="(00) 00000-0000" style="width:100%;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff">
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px"><button class="cta" onclick="sendBooking()">Enviar</button><button style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;padding:10px 12px;border-radius:8px" onclick="closeBooking()">Fechar</button></div>
     </div>
+  </div>
 
-</section>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function scrollTo(sel){const el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:'smooth'});}
 
+    // booking quick actions
+    function openBooking(){document.getElementById('bookingModal').style.display='flex'}
+    function closeBooking(){document.getElementById('bookingModal').style.display='none'}
+    function resetBooking(){document.getElementById('nome').value='';document.getElementById('servico').selectedIndex=0;document.getElementById('data').value='';document.getElementById('hora').value='';document.getElementById('tel').value='';}
+    function confirmBooking(){
+      const nome=document.getElementById('nome').value||'---';
+      const serv=document.getElementById('servico').value||'---';
+      const data=document.getElementById('data').value||'---';
+      const hora=document.getElementById('hora').value||'---';
+      const tel=document.getElementById('tel').value||'---';
+      // open WhatsApp with prefilled message (simulação)
+      const text = encodeURIComponent(`Agendamento - Auto Estima Vip
+Nome: ${nome}
+Serviço: ${serv}
+Data: ${data} ${hora}
+Telefone: ${tel}`);
+      window.open('https://wa.me/5515996069571?text=Olá,%20gostaria%20de%20saber%20se%20você%20tem%20horário%20disponível? - '+text,'_blank');
+      alert('Pedido de agendamento enviado via WhatsApp (simulado). Você também pode integrar envio por backend.');
+    }
+
+    function sendBooking(){
+      const n=document.getElementById('mNome').value||'---';
+      const s=document.getElementById('mServico').value||'---';
+      const d=document.getElementById('mData').value||'---';
+      const h=document.getElementById('mHora').value||'---';
+      const t=document.getElementById('mTel').value||'---';
+      const msg = encodeURIComponent(`Agendamento - Auto Estima Vip
+Nome: ${n}
+Serviço: ${s}
+Data: ${d} ${h}
+WhatsApp: ${t}`);
+      window.open('https://wa.me/5515996069571?text=Olá,%20gostaria%20de%20saber%20se%20você%20tem%20horário%20disponível? - '+msg,'_blank');
+      closeBooking();
+    }
+
+    // Map (Leaflet) with geolocation watch
+    function initMap(){
+      const map = L.map('map',{zoomControl:false}).setView([-23.55,-46.63],13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+      const salonMarker = L.marker([-23.55,-46.63]).addTo(map).bindPopup('Auto Estima Vip (Endereço de exemplo)');
+
+      if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(pos=>{
+          const lat=pos.coords.latitude; const lng=pos.coords.longitude;
+          const user = L.circleMarker([lat,lng],{radius:8,color:'#ff003c'}).addTo(map).bindPopup('Sua localização');
+          map.setView([lat,lng],13);
+        },err=>{console.warn('geo error',err.message)});
+      }
+    }
+    window.addEventListener('load',()=>{try{initMap()}catch(e){console.warn(e)}});
+  </script>
+
+<script>
+  function toggleMenu(){
+    document.querySelector('nav').classList.toggle('active');
+  }
+</script>
 </body>
 </html>

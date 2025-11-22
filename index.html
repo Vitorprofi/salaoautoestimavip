@@ -20,7 +20,7 @@
     body { font-family: 'Poppins', sans-serif; background:var(--black); color:#fff; overflow-x:hidden; scroll-behavior:smooth }
 
     /* NAV */
-    nav{ width:100%; padding:18px 8%; position:fixed; top:0; left:0; background:rgba(0,0,0,0.92); backdrop-filter:blur(8px); display:flex; justify-content:space-between; align-items:center; z-index:120; border-bottom:1px solid rgba(212,175,55,0.18) }
+    nav{ width:100%; padding:12px 8%; position:fixed; top:0; left:0; background:rgba(0,0,0,0.92); backdrop-filter:blur(8px); display:flex; justify-content:space-between; align-items:center; z-index:120; border-bottom:1px solid rgba(212,175,55,0.18) }
     .logo{ font-family:'Playfair Display', serif; color:var(--gold); font-weight:700; letter-spacing:3px; font-size:1.8rem }
     .menu a{ color:var(--gold); text-decoration:none; margin-left:28px; font-weight:600 }
     .menu a:hover{ color:#fff }
@@ -96,7 +96,7 @@
     <div class="menu">
       <a href="#sobre">Sobre</a>
       <a href="#cortes">Cortes</a>
-      <a href="#localizacao">Localização</a>
+      <a href="#localizacao">Localização & Agendamento</a>
     </div>
   </nav>
 
@@ -120,15 +120,15 @@ Mais do que transformar visual, nossa missão é elevar sua autoestima e fazer v
     <h2>Cortes</h2>
     <div class="cortes-grid">
       <div class="card">
-        <img src="https://imgs.search.brave.com/3fHr3EPq5-k_ppA2_0veGGUGO7IhlygXGQeM9z0GQFQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTQ3/ODA1NzgyMy9wdC9m/b3RvL25hdHVyYWwt/YmVhdXR5LmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1EQW1w/UEFZOXp6ZURDYzlC/YmdvLXZMNGFMOWpP/SU51ZE9xRjVNWnpj/NnNFPQ" alt="Degradê Moderno" />
+        <img src="cabelo1.jpg" alt="Degradê Moderno" />
         <h3>LUZES E COLORAÇÃO</h3>
       </div>
       <div class="card">
-        <img src="https://imgs.search.brave.com/MELWjBLBxcZuPyJDjQt0Xf2GxRrMJn-eSfU6kuodq2U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMjA2/NTY4NDY1Mi9wdC9m/b3RvL3lvdW5nLWJl/YXV0aWZ1bC13b21h/bi5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9MmQzTHNpZnhi/ZHJrLU1hSE1mclE5/TGJCamVxWnJ0UUxT/Z19pbThtNEgyST0" alt="Barba Premium" />
+        <img src="cabelo2.jpg" alt="Barba Premium" />
         <h3>CORTES E PENTEADOS</h3>
       </div>
       <div class="card">
-        <img src="https://imgs.search.brave.com/5IbxllJ-zeTV9GSfZ46jWLGuwLmIxsmFgzHt6JDPMDU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNTIz/MDc5ODcyL3B0L2Zv/dG8vc3R1ZGlvLXBv/cnRyYWl0LW9mLXlv/dW5nLXdvbWFuLXdp/dGgtbG9uZy1icm93/bi1oYWlyLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1pWnp3/UDJuc010V1IyMjM5/bUJvbEIzTC1qNC1s/NHlfOXNqS3hYa2hR/cEtZPQ" alt="Social Clássico" />
+        <img src="cabelo3.jpg" alt="Social Clássico" />
         <h3>PROGRESSIVA E ALISAMENTOS</h3>
       </div>
     </div>
@@ -171,21 +171,17 @@ Mais do que transformar visual, nossa missão é elevar sua autoestima e fazer v
             <label style="color:var(--gold)">Serviço</label>
             <select id="ag_servico" required>
               <option value="">Selecione o serviço</option>
-              <option value="Corte masculino">Corte masculino</option>
-              <option value="Barba completa">Barba completa</option>
-              <option value="Corte + Barba">Corte + Barba</option>
-              <option value="Sobrancelha">Sobrancelha</option>
+              <option value="Corte feminino">Corte feminino</option>
+              <option value="luzes">luzes</option>
+              <option value="coloração">coloração</option>
+              <option value="progressiva">progressiva</option>
+              <option value="outro">outro</option>
             </select>
           </div>
 
           <div class="field">
-            <label style="color:var(--gold)">Data e hora</label>
+            <label style="color:var(--gold)">Data e hora (consultar disponibilidade de)</label>
             <input id="ag_data" type="datetime-local" required>
-          </div>
-
-          <div class="field">
-            <label style="color:var(--gold)">Barbeiro (opcional)</label>
-            <input id="ag_barbeiro" type="text" placeholder="Ex: João, Carlos...">
           </div>
 
           <button type="submit">Enviar para WhatsApp</button>
@@ -201,6 +197,7 @@ Mais do que transformar visual, nossa missão é elevar sua autoestima e fazer v
   <div class="wa-fab" id="waFab" title="Falar no WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
   </div>
+  
 
   <script>
     const SALON_NUMBER = "5515996069571";
@@ -212,7 +209,6 @@ Mais do que transformar visual, nossa missão é elevar sua autoestima e fazer v
       const telefone = document.getElementById("ag_telefone").value.trim();
       const servico = encodeURIComponent(document.getElementById("ag_servico").value);
       const data = encodeURIComponent(document.getElementById("ag_data").value);
-      const barbeiro = encodeURIComponent(document.getElementById("ag_barbeiro").value.trim() || "Não especificado");
 
       if(!nome || !telefone || !servico || !data){
         document.getElementById("ag_status").textContent = "Por favor, preencha todos os campos obrigatórios.";
@@ -222,7 +218,7 @@ Mais do que transformar visual, nossa missão é elevar sua autoestima e fazer v
       const telefoneNumeros = telefone.replace(/[^0-9+]/g, "");
 
       const mensagem =
-        `*Novo agendamento*%0A%0A*Nome:* ${nome}%0A*WhatsApp:* ${telefoneNumeros}%0A*Serviço:* ${servico}%0A*Data:* ${data}%0A*Barbeiro:* ${barbeiro}`;
+        `*Novo agendamento*%0A%0A*Nome:* ${nome}%0A*WhatsApp:* ${telefoneNumeros}%0A*Serviço:* ${servico}%0A*Data:* ${data}%0A`;
 
       const url = `https://wa.me/${5515996069571}?text=${mensagem}`;
 

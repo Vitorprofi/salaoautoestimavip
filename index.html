@@ -1,212 +1,240 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auto Estima Vip - Cabelos Femininos</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{
-    background:#000;
-    color:#fff;
-    overflow-x:hidden;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auto Estima Vip</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
-/* FUNDO DOURADO ANIMADO */
-.fundo-animado{
-    position:fixed;top:0;left:0;width:100%;height:100%;
-    background:radial-gradient(circle,#e6b80022 0%,#000 70%);
-    animation:luxo 8s infinite alternate;
-    filter:blur(90px);
-    z-index:-1;
-}
-@keyframes luxo{0%{transform:scale(1);}100%{transform:scale(1.3);}}
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f5e7a1;
+      --black: #000;
+      --dark: #0c0c0c;
+      --gray: #b3b3b3;
+    }
 
-/* TEXTO DOURADO */
-.dourado{color:#d4af37;text-shadow:0 0 10px #d4af37,0 0 20px #b8860b;}
+    * { box-sizing: border-box; margin:0; padding:0 }
+    body { font-family: 'Poppins', sans-serif; background:var(--black); color:#fff; overflow-x:hidden; scroll-behavior:smooth }
 
-/* HEADER */
-header{
-    width:100%;position:fixed;top:0;left:0;padding:20px 50px;
-    display:flex;justify-content:space-between;align-items:center;
-    background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);z-index:10;
-}
-header h1{font-size:32px;font-weight:700;color:#d4af37;}
-nav a{
-    margin-left:25px;color:#fff;text-decoration:none;font-size:18px;
-    transition:.3s;
-}
-nav a:hover{color:#d4af37;}
+    /* NAV */
+    nav{ width:100%; padding:18px 8%; position:fixed; top:0; left:0; background:rgba(0,0,0,0.92); backdrop-filter:blur(8px); display:flex; justify-content:space-between; align-items:center; z-index:120; border-bottom:1px solid rgba(212,175,55,0.18) }
+    .logo{ font-family:'Playfair Display', serif; color:var(--gold); font-weight:700; letter-spacing:3px; font-size:1.8rem }
+    .menu a{ color:var(--gold); text-decoration:none; margin-left:28px; font-weight:600 }
+    .menu a:hover{ color:#fff }
 
-/* HERO */
-.hero{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:150px 50px 100px;gap:50px;
-}
-.hero-text h2{
-    font-size:60px;line-height:1.1;color:#d4af37;
-    animation:flutuar 4s infinite alternate;
-}
-.hero-text p{font-size:20px;margin-top:20px;max-width:500px;}
-@keyframes flutuar{0%{transform:translateY(0);}100%{transform:translateY(-15px);}}
+    /* HERO */
+    .hero{ position:relative; height:92vh; background:url('imagemb.png') center/cover no-repeat; display:flex; align-items:center; justify-content:center; padding:0 8% }
+    .hero::before{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.9)) }
+    .hero-content{ position:relative; text-align:center; max-width:900px }
+    .hero h1{ font-family:'Playfair Display', serif; font-size:4.6rem; color:var(--gold-light); text-shadow:0 0 30px rgba(212,175,55,0.45) }
+    .hero p{ font-size:1.25rem; opacity:0.95 }
 
-/* BOTÃO */
-.btn{
-    display:inline-block;margin-top:30px;padding:14px 40px;
-    background:linear-gradient(90deg,#d4af37,#8d6c1f);
-    color:#000;font-weight:700;border-radius:40px;text-decoration:none;font-size:20px;
-    box-shadow:0 0 20px #d4af37;transition:.3s;
-}
-.btn:hover{transform:scale(1.05);box-shadow:0 0 35px #d4af37;}
+    section{ padding:100px 8% }
+    h2{ color:var(--gold); font-size:2.8rem; margin-bottom:18px; letter-spacing:1.5px; text-transform:uppercase }
 
-.hero img{
-    width:420px;border-radius:20px;box-shadow:0 0 25px #d4af37;
-}
+    /* SOBRE */
+    #sobre p{ max-width:920px; font-size:1.12rem; line-height:1.8; opacity:0.9 }
 
-/* SERVIÇOS */
-.servicos{text-align:center;padding:80px 50px;}
-.servicos h2{font-size:48px;margin-bottom:40px;color:#d4af37;}
-.cards{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;
-}
-.card{
-    background:rgba(255,255,255,0.05);padding:25px;border-radius:20px;
-    backdrop-filter:blur(10px);box-shadow:0 0 15px #d4af37;
-    transition:.3s;
-}
-.card:hover{transform:translateY(-10px);box-shadow:0 0 25px #ffdf6b;}
-.card img{width:100%;border-radius:15px;margin-bottom:20px;}
+    /* CORTES */
+    .cortes-grid{ margin-top:36px; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:28px }
+    .card{ background:var(--dark); border:1px solid rgba(212,175,55,0.18); border-radius:12px; overflow:hidden; box-shadow:0 6px 22px rgba(0,0,0,0.6) }
+    .card img{ width:100%; height:300px; object-fit:cover; transition:transform .45s }
+    .card:hover img{ transform:scale(1.05) }
+    .card h3{ padding:19px; color:var(--gold); font-size:1.2rem }
 
-/* CONTATO */
-.contato{text-align:center;padding:80px 50px;}
-.contato h2{font-size:45px;color:#d4af37;margin-bottom:20px;}
+    /* CONTATO */
+    .contato form{ max-width:620px; margin:auto; display:flex; flex-direction:column; gap:14px }
+    input, select{ padding:14px; border-radius:10px; background:#0f0f0f; border:1px solid rgba(212,175,55,0.12); color:#fff }
+    button{ padding:14px; border-radius:10px; background:var(--gold); border:none; font-weight:700; cursor:pointer }
+    button:hover{ background:#fff }
 
-.whatsapp-btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    white-space:nowrap;
-    max-width:90%;
-    padding:16px 40px;
-    background:#d4af37;
-    color:#000;
-    font-size:22px;
-    font-weight:700;
-    border-radius:40px;
-    text-decoration:none;
-    box-shadow:0 0 20px #d4af37;
-    transition:.3s;
-}
-.whatsapp-btn:hover{
-    transform:scale(1.1);
-    box-shadow:0 0 30px #ffdf6b;
-}
+    /* MAP */
+    .map-wrap iframe{ width:100%; height:460px; border-radius:12px; border:1px solid rgba(212,175,55,0.18) }
 
-/* MAPA */
-.mapa{
-    padding:60px 30px;
-    text-align:center;
-}
-.mapa h2{
-    font-size:40px;
-    margin-bottom:25px;
-    color:#d4af37;
-}
-.mapa iframe{
-    width:100%;
-    max-width:900px;
-    height:450px;
-    border:0;
-    border-radius:20px;
-    box-shadow:0 0 20px #d4af37;
-}
+    /* LOCALIZAÇÃO + AGENDAMENTO LADO A LADO */
+    .loc-agenda-grid{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:40px;
+      margin-top:30px;
+    }
 
-/* RESPONSIVO */
-@media(max-width:900px){
-    .hero{flex-direction:column;text-align:center;padding-top:130px;}
-    .hero img{width:330px;}
-    .hero-text h2{font-size:45px;}
-}
-@media(max-width:600px){
-    header{padding:15px 30px;}
-    header h1{font-size:24px;}
-    nav a{font-size:16px;margin-left:12px;}
-}
-</style>
+    .local-box,
+    .agendamento-wrap{
+      background:#0d0d0d;
+      padding:22px;
+      border-radius:14px;
+      border:1px solid rgba(212,175,55,0.1);
+      box-shadow:0 6px 25px rgba(0,0,0,0.5);
+    }
+
+    .agendamento-form .field{
+      margin-bottom:14px;
+      display:flex;
+      flex-direction:column;
+    }
+
+    @media(max-width:900px){
+      .loc-agenda-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    /* WhatsApp flutuante */
+    .wa-fab{ position:fixed; right:22px; bottom:22px; background:var(--gold); width:64px; height:64px; border-radius:999px; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 30px rgba(0,0,0,0.5); cursor:pointer; z-index:150 }
+    .wa-fab img{ width:34px; height:34px }
+
+  </style>
 </head>
+
 <body>
-
-<div class="fundo-animado"></div>
-
-<header>
-    <h1>Auto Estima Vip</h1>
-    <nav>
-        <a href="#hero">Início</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#contato">Contato</a>
-        <a href="#mapa">Localização</a>
-    </nav>
-</header>
-
-<section class="hero" id="hero">
-    <div class="hero-text">
-        <h2 class="dourado">Transforme Seus Cabelos<br>Com Luxo e Elegância</h2>
-        <p>Especialistas em beleza feminina. Loiros, escovas, hidratações, cortes modernos e tratamentos premium.</p>
-        <a href="#contato" class="btn">Agendar Agora</a>
+  <nav>
+    <div class="logo">AUTO ESTIMA VIP</div>
+    <div class="menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#cortes">Cortes</a>
+      <a href="#localizacao">Localização</a>
     </div>
+  </nav>
 
-    <img src="https://imgs.search.brave.com/TOjxFlnnM89CDvw-t_PSORCxdB2kZ_eg63iY-PZhYrM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtZ3JhdGlz/L3JldHJhdG8tZG8t/Y2xvc2UtdXAtZGEt/bXVsaGVyLWVsZWdh/bnRlLWJyaW5jb3Mt/YWNlc3Nvcmlvcy1t/dWxoZXItYm9uaXRh/LWxvaXJhLWRlLWNh/YmVsby1sb25nby1l/bmNhcmFjb2xhZG8t/Y29tLW1hcXVpYWdl/bS1kZS1iZWxlemEt/ZS1yZXRyYXRvLWRl/LW1vZGEtZmVtaW5p/bmEtZGUtcGVsZS1z/YXVkYXZlbC1hLWdh/cm90YS1jb20tdW0t/c29ycmlzby1hZ3Jh/ZGF2ZWxfMzQzNjI5/LTU1LmpwZz9zZW10/PWFpc19oeWJyaWQm/dz03NDAmcT04MA">
-</section>
-
-<section class="servicos" id="servicos">
-    <h2>Serviços Exclusivos</h2>
-
-    <div class="cards">
-        <div class="card">
-            <img src="https://imgs.search.brave.com/8xBE7__aBeZIp7mfQ0Zrv_07HCkJ2XD1K_6sw58OPXE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvODky/MzY2MTQwL3B0L2Zv/dG8vYmVhdXRpZnVs/LXdvbWFuLXdpdGgt/bG9uZy1zdHJhaWdo/dC1oYWlyLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1BRkto/d0FGc2xqeHNJUHpa/MHNfRFRUSE5QZW1T/T3dkMnVaNEVwVEVy/dlh3PQ"alt="Loiro Premium">
-            <h3 class="dourado">Loiro</h3>
-            <p>Clareamento profissional, descoloração saudável e tons personalizados.</p>
-        </div>
-
-        <div class="card">
-            <img src="https://imgs.search.brave.com/h9VtxqX4SwTm3vKVmoHN6uLRlMkCHonVX73KldmruU4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9iZWxhLW11bGhl/ci1pbmRpYW5hLWNv/bS1sb25nb3MtY2Fi/ZWxvcy1icmlsaGFu/dGVzLWRlLXJ1YS1i/ZWxlemEtbW9kZWxv/LWdhcm90YS1wZW50/ZWFkby1wYXJhLW1h/cmNhLWRlLWx1eG9f/MTI1NzkwMi03MTkz/LmpwZz9zZW10PWFp/c19oeWJyaWQmdz03/NDAmcT04MA">
-            <h3 class="dourado">Escova & Hidratação</h3>
-            <p>Tratamentos para brilho intenso, maciez e redução de frizz.</p>
-        </div>
-
-        <div class="card">
-            <img src="https://imgs.search.brave.com/6rhcueSDxUkhzZmEgMJm-VI6BoxGfMPh1PvYev-dvN4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTEy/OTY0MzI1L3B0L2Zv/dG8vdW1hLWZhbnQl/QzMlQTFzdGljYS10/cmVzc2VzLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz15cGhu/a1hldjVrQUx2dlhn/UlNvd3pYTUotZ2dW/NVZJc3N2elVUYjRa/UkNNPQ">
-            <h3 class="dourado">Corte Feminino</h3>
-            <p>Do clássico ao moderno, cortes que valorizam sua beleza.</p>
-        </div>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Excelência em Cada Detalhe</h1>
+      <p>Transformamos cuidado em experiência: cortes, colorações e tratamentos que elevam sua autoestima e destacam o que você tem de mais bonito. Seu momento começa aqui.</p>
     </div>
-</section>
+  </section>
 
-<section class="contato" id="contato">
-    <h2>Agende Seu Horário</h2>
+  <section id="sobre">
+    <h2>Sobre Nós</h2>
+    <p>No Auto Estima VIP, acreditamos que beleza é mais do que aparência: é confiança, atitude e bem-estar. Nosso salão foi criado para proporcionar uma experiência completa, unindo técnicas modernas, cuidado personalizado e um ambiente acolhedor pensado especialmente para você.
 
-    <a class="whatsapp-btn" href="https://wa.me/5515996069571?text=Olá! Quero agendar um horário." target="_blank">
-        Falar no WhatsApp
-    </a>
-</section>
+Aqui, cada cliente é tratada como única. Trabalhamos com profissionais especializados em cortes, coloração, tratamentos capilares e estética feminina, sempre utilizando produtos de alta qualidade para garantir resultados impecáveis.
 
-<!-- MAPA ADICIONADO -->
-<section class="mapa" id="mapa">
-    <h2>Localização</h2>
+Mais do que transformar visual, nossa missão é elevar sua autoestima e fazer você se sentir ainda mais poderosa. No Auto Estima VIP, você encontra atenção, dedicação e excelência em cada detalhe — porque você merece o melhor todos os dias.</p>
+  </section>
 
-    <div style="position:relative;width:100%;max-width:700px;margin:0 auto;padding-bottom:50%;height:0;overflow:hidden;border-radius:20px;box-shadow:0 0 20px #d4af37;">
-      <iframe
-        src="https://www.google.com/maps?q=Avenida+Em%C3%ADlio+Nastri+116,+Vila+Nastri,+Itapetininga+SP&output=embed"
-        style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-        allowfullscreen
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+  <section id="cortes">
+    <h2>Cortes</h2>
+    <div class="cortes-grid">
+      <div class="card">
+        <img src="https://imgs.search.brave.com/3fHr3EPq5-k_ppA2_0veGGUGO7IhlygXGQeM9z0GQFQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTQ3/ODA1NzgyMy9wdC9m/b3RvL25hdHVyYWwt/YmVhdXR5LmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1EQW1w/UEFZOXp6ZURDYzlC/YmdvLXZMNGFMOWpP/SU51ZE9xRjVNWnpj/NnNFPQ" alt="Degradê Moderno" />
+        <h3>LUZES E COLORAÇÃO</h3>
+      </div>
+      <div class="card">
+        <img src="https://imgs.search.brave.com/MELWjBLBxcZuPyJDjQt0Xf2GxRrMJn-eSfU6kuodq2U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMjA2/NTY4NDY1Mi9wdC9m/b3RvL3lvdW5nLWJl/YXV0aWZ1bC13b21h/bi5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9MmQzTHNpZnhi/ZHJrLU1hSE1mclE5/TGJCamVxWnJ0UUxT/Z19pbThtNEgyST0" alt="Barba Premium" />
+        <h3>CORTES E PENTEADOS</h3>
+      </div>
+      <div class="card">
+        <img src="https://imgs.search.brave.com/5IbxllJ-zeTV9GSfZ46jWLGuwLmIxsmFgzHt6JDPMDU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNTIz/MDc5ODcyL3B0L2Zv/dG8vc3R1ZGlvLXBv/cnRyYWl0LW9mLXlv/dW5nLXdvbWFuLXdp/dGgtbG9uZy1icm93/bi1oYWlyLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1pWnp3/UDJuc010V1IyMjM5/bUJvbEIzTC1qNC1s/NHlfOXNqS3hYa2hR/cEtZPQ" alt="Social Clássico" />
+        <h3>PROGRESSIVA E ALISAMENTOS</h3>
+      </div>
     </div>
+  </section>
 
-</section>
+  <!-- LOCALIZAÇÃO + AGENDAMENTO -->
+  <section id="localizacao" style="padding-top:120px">
+    <h2>Localização & Agendamento</h2>
+
+    <div class="loc-agenda-grid">
+
+      <!-- LOCALIZAÇÃO -->
+      <div class="local-box">
+        <h3 style="color:var(--gold); margin-bottom:10px">Onde Estamos</h3>
+        <p style="opacity:.9; margin-bottom:12px">Confira nossa barbearia no Google Maps:</p>
+
+        <div class="map-wrap">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.0958223684165!2d-48.062441688760615!3d-23.600896162957945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c5cc9897f1aab9%3A0x19a7e6d29ea1b7d6!2sAv.%20Em%C3%ADlio%20Nastri%2C%20116%20-%20Vila%20Nastri%2C%20Itapetininga%20-%20SP%2C%2018207-190!5e0!3m2!1spt-BR!2sbr!4v1763825685939!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- AGENDAMENTO -->
+      <div class="agendamento-wrap">
+        <h3 style="color:var(--gold)">Agende Seu Corte</h3>
+        <p style="opacity:.85; margin-bottom:14px">Selecione o serviço, data e hora, e envie direto para o nosso WhatsApp.</p>
+
+        <form id="formAgendamento" class="agendamento-form">
+
+          <div class="field">
+            <label style="color:var(--gold)">Nome completo</label>
+            <input id="ag_nome" type="text" required placeholder="Seu nome">
+          </div>
+
+          <div class="field">
+            <label style="color:var(--gold)">Telefone (WhatsApp)</label>
+            <input id="ag_telefone" type="tel" required placeholder="Ex: +55 11 90000-0000">
+          </div>
+
+          <div class="field">
+            <label style="color:var(--gold)">Serviço</label>
+            <select id="ag_servico" required>
+              <option value="">Selecione o serviço</option>
+              <option value="Corte masculino">Corte masculino</option>
+              <option value="Barba completa">Barba completa</option>
+              <option value="Corte + Barba">Corte + Barba</option>
+              <option value="Sobrancelha">Sobrancelha</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label style="color:var(--gold)">Data e hora</label>
+            <input id="ag_data" type="datetime-local" required>
+          </div>
+
+          <div class="field">
+            <label style="color:var(--gold)">Barbeiro (opcional)</label>
+            <input id="ag_barbeiro" type="text" placeholder="Ex: João, Carlos...">
+          </div>
+
+          <button type="submit">Enviar para WhatsApp</button>
+        </form>
+
+        <p id="ag_status" style="margin-top:10px; color:var(--gray)"></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WhatsApp flutuante -->
+  <div class="wa-fab" id="waFab" title="Falar no WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+  </div>
+
+  <script>
+    const SALON_NUMBER = "5515996069571";
+
+    document.getElementById("formAgendamento").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const nome = encodeURIComponent(document.getElementById("ag_nome").value.trim());
+      const telefone = document.getElementById("ag_telefone").value.trim();
+      const servico = encodeURIComponent(document.getElementById("ag_servico").value);
+      const data = encodeURIComponent(document.getElementById("ag_data").value);
+      const barbeiro = encodeURIComponent(document.getElementById("ag_barbeiro").value.trim() || "Não especificado");
+
+      if(!nome || !telefone || !servico || !data){
+        document.getElementById("ag_status").textContent = "Por favor, preencha todos os campos obrigatórios.";
+        return;
+      }
+
+      const telefoneNumeros = telefone.replace(/[^0-9+]/g, "");
+
+      const mensagem =
+        `*Novo agendamento*%0A%0A*Nome:* ${nome}%0A*WhatsApp:* ${telefoneNumeros}%0A*Serviço:* ${servico}%0A*Data:* ${data}%0A*Barbeiro:* ${barbeiro}`;
+
+      const url = `https://wa.me/${5515996069571}?text=${mensagem}`;
+
+      document.getElementById("ag_status").textContent = "Abrindo WhatsApp...";
+      window.open(url, "_blank");
+    });
+
+    document.getElementById("waFab").addEventListener("click", function(){
+      const pre = encodeURIComponent("Olá! Gostaria de agendar um horário.");
+      window.open(`https://wa.me/${SALON_NUMBER}?text=${pre}`, "_blank");
+    });
+  </script>
 
 </body>
 </html>
-
